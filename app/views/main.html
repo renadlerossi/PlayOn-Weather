@@ -1,3 +1,33 @@
-<div class="row marketing">
-  <input type="text" ng-model="search" ng-model-options="{ debounce: 800 }" placeholder="Enter City name">
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-8">
+      <h1>{{ searchReturn.city.name }}, {{ searchReturn.city.country }}</h1>
+      <h4>{{ actualDate | date: 'MMM d, EEEE - ha' }}</h4>
+    </div>
+
+    <div class="col-md-4">
+      <input type="text" ng-model="search" ng-model-options="{ debounce: 800 }" placeholder="Enter City name">
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid">
+
+  <div class="col-md-2" ng-repeat="d in searchReturn.list">
+    <div class="card">
+      <h4 class="card-title">Date</h4>
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-block">
+        <h4 class="card-title">{{ d.weather[0].main }}</h4>
+        <p class="card-text">
+          <strong>Min:</strong> {{ d.temp.min }}º<br>
+          <strong>Max:</strong> {{ d.temp.max }}º
+        </p>
+      </div>
+    </div>
+  </div>
+
 </div>
