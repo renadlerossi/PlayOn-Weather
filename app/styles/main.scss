@@ -13,8 +13,20 @@ body {
   padding: 0;
 }
 
-
-.card {
-  border: 1px solid black;
-  padding: 20px;
+.container {
+  width: 100%;
+  max-width: 1090px;
+  margin: 0 auto;
 }
+
+.input-wrapper {
+  width: 30%;
+  float: right;
+}
+
+.weather-cards {
+  p {
+    text-transform: capitalize;
+  }
+}
+
