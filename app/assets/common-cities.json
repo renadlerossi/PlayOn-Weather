@@ -1,0 +1,290 @@
+
+{"cities": [
+  {
+    "name": "Agra, IN"
+  },
+  {
+    "name": "Amsterdam, NL"
+  },
+  {
+    "name": "Antalya, TR"
+  },
+  {
+    "name": "Athens, GR"
+  },
+  {
+    "name": "Atlanta, US"
+  },
+  {
+    "name": "Auckland, NZ"
+  },
+  {
+    "name": "Bali, IN"
+  },
+  {
+    "name": "Bangkok, TH"
+  },
+  {
+    "name": "Barcelona, ES"
+  },
+  {
+    "name": "Beijing, CN"
+  },
+  {
+    "name": "Berlin, DE"
+  },
+  {
+    "name": "Bogotá, CO"
+  },
+  {
+    "name": "Boston, US"
+  },
+  {
+    "name": "Brussels, BE"
+  },
+  {
+    "name": "Bucharest, RO"
+  },
+  {
+    "name": "Budapest, HU"
+  },
+  {
+    "name": "Buenos Aires, AR"
+  },
+  {
+    "name": "Cairo, EG"
+  },
+  {
+    "name": "Cancun, MX"
+  },
+  {
+    "name": "Cape Town, ZA"
+  },
+  {
+    "name": "Chennai, IN"
+  },
+  {
+    "name": "Chicago, US"
+  },
+  {
+    "name": "Copenhagen, DK"
+  },
+  {
+    "name": "Dallas, US"
+  },
+  {
+    "name": "Delhi, IN"
+  },
+  {
+    "name": "Dubai, AE"
+  },
+  {
+    "name": "Dublin, IE"
+  },
+  {
+    "name": "Edinburgh, GB"
+  },
+  {
+    "name": "Edirne, TR"
+  },
+  {
+    "name": "Florence, IT"
+  },
+  {
+    "name": "Guangzhou, CN"
+  },
+  {
+    "name": "H'o Chí Minh, VN"
+  },
+  {
+    "name": "Hong Kong, HK"
+  },
+  {
+    "name": "Honolulu, US"
+  },
+  {
+    "name": "Houston, US"
+  },
+  {
+    "name": "Jakarta, ID"
+  },
+  {
+    "name": "Jerusalem, IL"
+  },
+  {
+    "name": "Johannesburg, ZA"
+  },
+  {
+    "name": "Kiev, UA"
+  },
+  {
+    "name": "Kuala Lumpur, MY"
+  },
+  {
+    "name": "Las Vegas, US"
+  },
+  {
+    "name": "Lima, PE"
+  },
+  {
+    "name": "Lisbon, PT"
+  },
+  {
+    "name": "London, GB"
+  },
+  {
+    "name": "Los Angeles, US"
+  },
+  {
+    "name": "Luxor, EG"
+  },
+  {
+    "name": "Macau, MO"
+  },
+  {
+    "name": "Madrid, ES"
+  },
+  {
+    "name": "Manila, PH"
+  },
+  {
+    "name": "Marrakesh, MA"
+  },
+  {
+    "name": "Mecca, SA"
+  },
+  {
+    "name": "Melbourne, AU"
+  },
+  {
+    "name": "Mexico City, MX"
+  },
+  {
+    "name": "Miami, US"
+  },
+  {
+    "name": "Milan, IT"
+  },
+  {
+    "name": "Montreal, CA"
+  },
+  {
+    "name": "Moscow, RU"
+  },
+  {
+    "name": "Mumbai, IN"
+  },
+  {
+    "name": "Munich, DE"
+  },
+  {
+    "name": "New Orleans, US"
+  },
+  {
+    "name": "New York, US"
+  },
+  {
+    "name": "Orlando, US"
+  },
+  {
+    "name": "Oslo, NO"
+  },
+  {
+    "name": "Paris, FR"
+  },
+  {
+    "name": "Petra, JO"
+  },
+  {
+    "name": "Phatthaya, TH"
+  },
+  {
+    "name": "Philadelphia, US"
+  },
+  {
+    "name": "Phuket, TH"
+  },
+  {
+    "name": "Prague, CZ"
+  },
+  {
+    "name": "Punta Cana, DO"
+  },
+  {
+    "name": "Rio de Janeiro, BR"
+  },
+  {
+    "name": "Riyadh, SA"
+  },
+  {
+    "name": "Rome, IT"
+  },
+  {
+    "name": "San Diego, US"
+  },
+  {
+    "name": "San Francisco, US"
+  },
+  {
+    "name": "Santiago, CL"
+  },
+  {
+    "name": "Seattle, US"
+  },
+  {
+    "name": "Seoul, KR"
+  },
+  {
+    "name": "Shanghai, CN"
+  },
+  {
+    "name": "Sharm el-Sheikh, EG"
+  },
+  {
+    "name": "Shenzhen, CN"
+  },
+  {
+    "name": "Singapore, SG"
+  },
+  {
+    "name": "St. Petersburg, RU"
+  },
+  {
+    "name": "Stockholm, SE"
+  },
+  {
+    "name": "São Paulo, BR"
+  },
+  {
+    "name": "Taipei, TW"
+  },
+  {
+    "name": "Tokyo, JP"
+  },
+  {
+    "name": "Toronto, CA"
+  },
+  {
+    "name": "Vancouver, CA"
+  },
+  {
+    "name": "Varna, BG"
+  },
+  {
+    "name": "Venice, IT"
+  },
+  {
+    "name": "Vienna, AT"
+  },
+  {
+    "name": "Warsaw, PL"
+  },
+  {
+    "name": "Washington D.C., US"
+  },
+  {
+    "name": "Wellington, NZ"
+  },
+  {
+    "name": "Zurich, CH"
+  }]}
