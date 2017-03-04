@@ -1,33 +1,40 @@
 
-<div class="container">
-  <div class="row">
-
-    <div class="col-md-8">
-      <h1>{{ searchReturn.city.name }}, {{ searchReturn.city.country }}</h1>
-      <h4>{{ actualDate | date: 'MMM d, EEEE - ha' }}</h4>
-    </div>
-
-    <div class="col-md-4">
-      <input type="text" ng-model="search" ng-model-options="{ debounce: 800 }" placeholder="Enter City name">
-    </div>
-
+<div layout="column">
+  <div flex>
+    <md-content class="md-padding input-wrapper">
+      <md-autocomplete
+        md-selected-item="search"
+        md-selected-item-change="fetch()"
+        md-search-text="searchText"
+        md-items="item in commonCities | filter: searchText"
+        md-item-text="item.name"
+        md-min-length="0"
+        placeholder="Insert city name">
+        <md-item-template>
+          <span md-highlight-text="searchText" md-highlight-flags="^i">{{ item.name }}</span>
+        </md-item-template>
+      </md-autocomplete>
+    </md-content>
+  </div>
+  <div flex>
+    <h1>{{ searchReturn.city.name }}, {{ searchReturn.city.country }}</h1>
+    <h4>{{ actualDate | date: 'MMM d, EEEE - h:mma' }}</h4>
   </div>
 </div>
 
-<div class="container-fluid">
-
-  <div class="col-md-2" ng-repeat="d in searchReturn.list">
-    <div class="card">
-      <h4 class="card-title">Date</h4>
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-block">
-        <h4 class="card-title">{{ d.weather[0].main }}</h4>
-        <p class="card-text">
-          <strong>Min:</strong> {{ d.temp.min }}º<br>
-          <strong>Max:</strong> {{ d.temp.max }}º
-        </p>
+<div layout="column">
+  <div layout="row" layout-wrap>
+    <md-card style="width: 23.4%;" ng-repeat="card in searchReturn.list">
+      <md-card-content class="weather-cards">
+        <h3>{{ cardsDate[$index] }}</h3>
+        <img src="http://placehold.it/50x50" class="md-card-image" alt="weather image">
+        <p>{{ card.weather[0].description }}</p>
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button>see more</md-button>
       </div>
-    </div>
+    </md-card>
   </div>
-
 </div>
+
+
