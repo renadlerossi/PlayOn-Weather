@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name playOnWeatherApp.controller:AboutCtrl
+ * @name playOnWeatherApp.controller:DetailCtrl
  * @description
- * # AboutCtrl
+ * # DetailCtrl
  * Controller of the playOnWeatherApp
  */
 angular.module('playOnWeatherApp')
-  .controller('AboutCtrl', function () {
+  .controller('DetailCtrl',  function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
