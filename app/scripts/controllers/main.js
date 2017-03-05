@@ -8,7 +8,7 @@
  * Controller of the playOnWeatherApp
  */
 angular.module('playOnWeatherApp')
-  .controller('MainCtrl', function ($scope, $http, $filter) {
+  .controller('MainCtrl', function ($scope, $http, $filter, $location) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -18,25 +18,25 @@ angular.module('playOnWeatherApp')
     $scope.actualDate = new Date();
     $scope.cardsDate = [];
     let weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    let weatherStatusStyles = [
-      {name: '01d', class: 'wi-day-sunny', background: ''},
-      {name: '01n', class: 'wi-night-clear', background: ''},
-      {name: '02d', class: 'wi-day-cloudy', background: ''},
-      {name: '02n', class: 'wi-night-alt-cloudy', background: ''},
-      {name: '03d', class: 'wi-day-rain-mix', background: ''},
-      {name: '03n', class: 'wi-night-alt-showers', background: ''},
-      {name: '04d', class: 'wi-cloudy', background: ''},
-      {name: '04n', class: 'wi-cloudy', background: ''},
-      {name: '09d', class: 'wi-rain', background: ''},
-      {name: '09n', class: 'wi-rain', background: ''},
-      {name: '10d', class: 'wi-day-rain', background: ''},
-      {name: '10n', class: 'wi-night-rain', background: ''},
-      {name: '11d', class: 'wi-thunderstorm', background: ''},
-      {name: '11n', class: 'wi-thunderstorm', background: ''},
-      {name: '13d', class: 'wi-snow', background: ''},
-      {name: '13n', class: 'wi-snow', background: ''},
-      {name: '50d', class: 'wi-showers', background: ''},
-      {name: '50n', class: 'wi-showers', background: ''}
+    let weatherStatusIcons = [
+      {name: '01d', icon: 'wi-day-sunny'},
+      {name: '01n', icon: 'wi-night-clear'},
+      {name: '02d', icon: 'wi-day-cloudy'},
+      {name: '02n', icon: 'wi-night-alt-cloudy'},
+      {name: '03d', icon: 'wi-day-rain-mix'},
+      {name: '03n', icon: 'wi-night-alt-showers'},
+      {name: '04d', icon: 'wi-cloudy'},
+      {name: '04n', icon: 'wi-cloudy'},
+      {name: '09d', icon: 'wi-rain'},
+      {name: '09n', icon: 'wi-rain'},
+      {name: '10d', icon: 'wi-day-rain'},
+      {name: '10n', icon: 'wi-night-rain'},
+      {name: '11d', icon: 'wi-thunderstorm'},
+      {name: '11n', icon: 'wi-thunderstorm'},
+      {name: '13d', icon: 'wi-snow'},
+      {name: '13n', icon: 'wi-snow'},
+      {name: '50d', icon: 'wi-showers'},
+      {name: '50n', icon: 'wi-showers'}
     ];
 
 
@@ -61,6 +61,7 @@ angular.module('playOnWeatherApp')
             let cardDate = weekDay + ' ' + monthDay;
             $scope.cardsDate.push(cardDate);
           });
+          console.log($scope.searchReturn);
         });
     }
 
@@ -69,8 +70,12 @@ angular.module('playOnWeatherApp')
       });
 
     $scope.getWeatherIcon = function(weather) {
-      let newIcon = $filter('filter')(weatherStatusStyles, {name: weather});
-      return newIcon[0].class;
+      let equivalentWeather = $filter('filter')(weatherStatusIcons, {name: weather});
+      return equivalentWeather[0].icon;
+    };
+
+    $scope.seeDetails = function () {
+      $location.path('/day-detail');
     };
 
   });
