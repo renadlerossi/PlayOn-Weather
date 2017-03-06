@@ -22,10 +22,10 @@ angular.module('playOnWeatherApp')
     $scope.cardsDate = [];
 
     // Set weekdays - API doesn't have that information
-    let weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    var weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
     // Load weather Icons
-    let weatherStatusIcons = [
+    var weatherStatusIcons = [
       {name: '01d', icon: 'wi-day-sunny'},
       {name: '01n', icon: 'wi-night-clear'},
       {name: '02d', icon: 'wi-day-cloudy'},
@@ -51,20 +51,21 @@ angular.module('playOnWeatherApp')
       // Clean local storage if user searched before
       if (localStorage) {
         localStorage.removeItem('search');
+        localStorage.removeItem('card');
       }
 
       // Call API services to retrieve data
-      weatherData.apiCall(searchWord).then(function (response) {
-        $scope.searchReturn = response.data;
+      weatherData.getWeatherData(searchWord).then(function (data) {
+        $scope.searchReturn = data;
 
         // Set Local Storage to be used in the second view
         localStorage.setItem('search', $scope.searchReturn.city.name + ', ' + $scope.searchReturn.city.country);
 
         // Calculate date and weekdays for the 16 days forecast
         angular.forEach($scope.searchReturn.list, function (value, index) {
-          let monthDay = $scope.actualDate.getDate() + index;
-          let weekDay = weekDays[((monthDay + 1) % 7)];
-          let cardDate = weekDay + ' ' + monthDay;
+          var monthDay = $scope.actualDate.getDate() + index;
+          var weekDay = weekDays[((monthDay + 1) % 7)];
+          var cardDate = weekDay + ' ' + monthDay;
           $scope.cardsDate.push(cardDate);
         });
       });
@@ -72,19 +73,20 @@ angular.module('playOnWeatherApp')
 
     $scope.fetch('Dublin, IE');
 
-    // Search typed letters in a most common cities list to avoid overloading API with requests
+    // Search typed varters in a most common cities list to avoid overloading API with requests
     $http.get('assets/common-cities.json').then(function (response) {
         $scope.commonCities = response.data.cities;
       });
 
     // Apply icons conform weather retrived in the API
     $scope.getWeatherIcon = function(weather) {
-      let equivalentWeather = $filter('filter')(weatherStatusIcons, {name: weather});
+      var equivalentWeather = $filter('filter')(weatherStatusIcons, {name: weather});
       return equivalentWeather[0].icon;
     };
 
-    $scope.seeDetails = function () {
-      $location.path('/day-detail');
+    $scope.seeDetails = function (index) {
+      localStorage.setItem('card', index);
+      $location.path('/day-detail/' + index);
     };
 
   });

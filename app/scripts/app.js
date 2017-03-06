@@ -24,7 +24,7 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/day-detail', {
+      .when('/day-detail/:id', {
         templateUrl: 'views/detail.html',
         controller: 'DetailCtrl',
         controllerAs: 'detail'

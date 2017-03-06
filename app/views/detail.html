@@ -16,6 +16,8 @@
     </md-content>
   </div>
   <div flex>
-    <h1 class="searched-city">{{ searchReturn.city.name }}, {{ searchReturn.city.country }}<br> <span>{{ actualDate | date: 'MMM d, EEEE - h:mma' }}</span></h1>
+    <h1 class="searched-city">{{ data.city.name }}, {{ data.city.country }}<br> <span>{{ actualCard | date: 'MMM d, EEEE' }}</span></h1>
+
+    <div> {{item}}</div>
   </div>
 </div>

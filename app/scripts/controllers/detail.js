@@ -8,25 +8,18 @@
  * Controller of the playOnWeatherApp
  */
 angular.module('playOnWeatherApp')
-  .controller('DetailCtrl',  function ($scope, weatherData) {
+  .controller('DetailCtrl',  function ($scope, $location, $routeParams, weatherData) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    // Get current date
-    $scope.actualDate = new Date();
-
-    let oldSearchword = localStorage.getItem('search');
-
-    loadResults(oldSearchword);
-
-    function loadResults(query) {
-      weatherData.apiCall(query).then(function (response) {
-        $scope.searchReturn = response.data;
-      });
-    }
-
+    weatherData.getWeatherData().then(function (data) {
+      $scope.data = data;
+      $scope.item = data.list[$routeParams.id];
+    }, function () {
+      $location.path('/');
+    });
 
   });
