@@ -53,6 +53,7 @@ angular.module('playOnWeatherApp')
       });
     };
 
+    // Fetch data for initial state
     $scope.fetch('Dublin, IE');
 
     // Search typed characters in a most common cities list to avoid overloading API with requests
@@ -60,7 +61,7 @@ angular.module('playOnWeatherApp')
         $scope.commonCities = response.data.cities;
       });
 
-    // Apply icons conform weather retrived in the API
+    // Apply icons conform weather collected from the API
     $scope.getWeatherIcon = function(weather) {
       var equivalentWeather = $filter('filter')(weatherStatusIcons, {name: weather});
       return equivalentWeather[0].icon;

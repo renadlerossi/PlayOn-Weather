@@ -1,7 +1,46 @@
 <div layout="column">
   <div flex>
-    <h1 class="searched-city">{{ data.city.name }}, {{ data.city.country }}<br> <span>{{ actualCard | date: 'MMM d, EEEE' }}</span></h1>
-
-    <div>{{item}}</div>
+    <h1 class="searched-city">{{ data.city.name }}, {{ data.city.country }}<br> <span>{{ currentCardDate | date: 'MMM d, EEEE' }}</span></h1>
   </div>
+</div>
+
+<div class="grid-list" layout="column">
+  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px" >
+
+    <md-grid-tile class="description-tile" style="background-color: red" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
+      <div class="md-card-image wi wi-day-sunny"></div>
+      <md-grid-tile-footer>
+        <h3>Description</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile class="min-tile" style="background-color: red" md-rowspan="1" md-colspan="1">
+      <div class="md-card-image wi wi-day-sunny"></div>
+      <md-grid-tile-footer>
+        <h3>Min</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile class="max-tile" style="background-color: red" md-rowspan="1" md-colspan="1">
+      <div class="md-card-image wi wi-day-sunny"></div>
+      <md-grid-tile-footer>
+        <h3>Max</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile class="temp-tile" style="background-color: red" md-rowspan="1" md-colspan="2">
+      <div class="md-card-image wi wi-day-sunny"></div>
+      <md-grid-tile-footer>
+        <h3>Morning + Day + Eve</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile class="details-tile" style="background-color: red" md-rowspan="1" md-colspan="4">
+      <div class="md-card-image wi wi-day-sunny"></div>
+      <md-grid-tile-footer>
+        <h3>Wind + Clouds + Pressure + Speed</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+  </md-grid-list>
 </div>
