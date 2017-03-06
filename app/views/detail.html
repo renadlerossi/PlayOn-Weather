@@ -5,42 +5,71 @@
 </div>
 
 <div class="grid-list" layout="column">
-  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px" >
+  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="7" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px" >
 
-    <md-grid-tile class="description-tile" style="background-color: red" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
-      <div class="md-card-image wi wi-day-sunny"></div>
+    <md-grid-tile class="description-tile" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" md-rowspan-sm="1" md-rowspan-xs="1">
+      <div class="md-card-image wi" ng-class="getWeatherIcon()"></div>
       <md-grid-tile-footer>
-        <h3>Description</h3>
+        <span class="title">{{ item.weather[0].description }}</span>
       </md-grid-tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile class="min-tile" style="background-color: red" md-rowspan="1" md-colspan="1">
-      <div class="md-card-image wi wi-day-sunny"></div>
+    <md-grid-tile class="standard-tile" md-rowspan="1" md-colspan="1">
+      <div class="md-card-image wi wi-thermometer-exterior"></div>
       <md-grid-tile-footer>
-        <h3>Min</h3>
+        <span class="title">min: {{ item.temp.min }}°</span>
       </md-grid-tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile class="max-tile" style="background-color: red" md-rowspan="1" md-colspan="1">
-      <div class="md-card-image wi wi-day-sunny"></div>
+    <md-grid-tile class="standard-tile" md-rowspan="1" md-colspan="1">
+      <div class="md-card-image wi wi-thermometer"></div>
       <md-grid-tile-footer>
-        <h3>Max</h3>
+        <span class="title">max: {{ item.temp.max }}°</span>
       </md-grid-tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile class="temp-tile" style="background-color: red" md-rowspan="1" md-colspan="2">
-      <div class="md-card-image wi wi-day-sunny"></div>
+    <md-grid-tile class="standard-tile" md-rowspan="1" md-colspan="1">
+      <div class="md-card-image wi wi-sunrise"></div>
       <md-grid-tile-footer>
-        <h3>Morning + Day + Eve</h3>
+        <span class="title">morning: {{ item.temp.morn }}°</span>
       </md-grid-tile-footer>
     </md-grid-tile>
 
-    <md-grid-tile class="details-tile" style="background-color: red" md-rowspan="1" md-colspan="4">
-      <div class="md-card-image wi wi-day-sunny"></div>
+    <md-grid-tile class="standard-tile" md-rowspan="1" md-colspan="1">
+      <div class="md-card-image wi wi-horizon-alt"></div>
       <md-grid-tile-footer>
-        <h3>Wind + Clouds + Pressure + Speed</h3>
+        <span class="title">day: {{ item.temp.day }}°</span>
       </md-grid-tile-footer>
     </md-grid-tile>
+
+    <md-grid-tile class="standard-tile" md-rowspan="1" md-colspan="1">
+      <div class="md-card-image wi wi-moonrise"></div>
+      <md-grid-tile-footer>
+        <span class="title">evening: {{ item.temp.eve }}°</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile class="standard-tile" md-rowspan="1" md-colspan="2">
+      <div class="md-card-image wi wi-humidity"></div>
+      <md-grid-tile-footer>
+        <span class="title">Humidity: {{ item.humidity }}%</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile class="standard-tile" md-rowspan="1" md-colspan="2">
+      <div class="md-card-image wi wi-cloudy"></div>
+      <md-grid-tile-footer>
+        <span class="title">Cloudiness: {{ item.clouds }}%</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile class="standard-tile" md-rowspan="1" md-colspan="1">
+      <div class="md-card-image wi wi-strong-wind"></div>
+      <md-grid-tile-footer>
+        <span class="title">Wind: {{ item.speed }}m/sec</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
 
   </md-grid-list>
 </div>
