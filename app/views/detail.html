@@ -1,23 +1,7 @@
 <div layout="column">
   <div flex>
-    <md-content class="md-padding input-wrapper">
-      <md-autocomplete
-        md-selected-item="search"
-        md-selected-item-change="fetch()"
-        md-search-text="searchText"
-        md-items="item in commonCities | filter: searchText"
-        md-item-text="item.name"
-        md-min-length="0"
-        placeholder="Insert city name">
-        <md-item-template>
-          <span md-highlight-text="searchText" md-highlight-flags="^i">{{ item.name }}</span>
-        </md-item-template>
-      </md-autocomplete>
-    </md-content>
-  </div>
-  <div flex>
     <h1 class="searched-city">{{ data.city.name }}, {{ data.city.country }}<br> <span>{{ actualCard | date: 'MMM d, EEEE' }}</span></h1>
 
-    <div> {{item}}</div>
+    <div>{{item}}</div>
   </div>
 </div>

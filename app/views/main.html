@@ -1,6 +1,10 @@
-<div layout="column">
-  <div flex>
-    <md-content class="md-padding input-wrapper">
+<div layout="row" layout-align="center center">
+  <div flex="70">
+    <h1 class="searched-city">{{ searchReturn.city.name }}, {{ searchReturn.city.country }}<br><span>{{ actualDate | date: 'MMM d, EEEE - h:mma' }}</span></h1>
+  </div>
+
+  <div flex="30" class="input-wrapper">
+    <md-content class="md-padding">
       <md-autocomplete
         md-selected-item="search"
         md-selected-item-change="fetch(searchText)"
@@ -14,9 +18,6 @@
         </md-item-template>
       </md-autocomplete>
     </md-content>
-  </div>
-  <div flex>
-    <h1 class="searched-city">{{ searchReturn.city.name }}, {{ searchReturn.city.country }}<br><span>{{ actualDate | date: 'MMM d, EEEE - h:mma' }}</span></h1>
   </div>
 </div>
 

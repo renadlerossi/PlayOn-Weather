@@ -15,6 +15,7 @@ angular.module('playOnWeatherApp')
       'Karma'
     ];
 
+    // Get data to be displayed - If no data at all, redirect to the start of the flow
     weatherData.getWeatherData().then(function (data) {
       $scope.data = data;
       $scope.item = data.list[$routeParams.id];
