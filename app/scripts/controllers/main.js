@@ -8,21 +8,18 @@
  * Controller of the playOnWeatherApp
  */
 angular.module('playOnWeatherApp')
-  .controller('MainCtrl', function ($scope, $http, $filter, $location, weatherData) {
+  .controller('MainCtrl', function ($scope, $http, $filter, $location, weatherData, forecastDaysCalc) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    // Get current date
-    $scope.actualDate = new Date();
+    // Retrieve Current date
+    $scope.currentDate = forecastDaysCalc.currentDate;
 
-    // Create array for 16 days date
-    $scope.cardsDate = [];
-
-    // Set weekdays - API doesn't have that information
-    var weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    // Retrieve 16 days date
+    $scope.cardsDate = forecastDaysCalc.cardsDate;
 
     // Load weather Icons
     var weatherStatusIcons = [
@@ -48,32 +45,17 @@ angular.module('playOnWeatherApp')
 
     $scope.fetch = function(searchWord) {
 
-      // Clean local storage if user searched before
-      if (localStorage) {
-        localStorage.removeItem('search');
-        localStorage.removeItem('card');
-      }
-
-      // Call API services to retrieve data
+      // Send searchWord to getWeatherData services
       weatherData.getWeatherData(searchWord).then(function (data) {
+
+        // Assign result of the API to a scope variable
         $scope.searchReturn = data;
-
-        // Set Local Storage to be used in the second view
-        localStorage.setItem('search', $scope.searchReturn.city.name + ', ' + $scope.searchReturn.city.country);
-
-        // Calculate date and weekdays for the 16 days forecast
-        angular.forEach($scope.searchReturn.list, function (value, index) {
-          var monthDay = $scope.actualDate.getDate() + index;
-          var weekDay = weekDays[((monthDay + 1) % 7)];
-          var cardDate = weekDay + ' ' + monthDay;
-          $scope.cardsDate.push(cardDate);
-        });
       });
     };
 
     $scope.fetch('Dublin, IE');
 
-    // Search typed varters in a most common cities list to avoid overloading API with requests
+    // Search typed characters in a most common cities list to avoid overloading API with requests
     $http.get('assets/common-cities.json').then(function (response) {
         $scope.commonCities = response.data.cities;
       });
