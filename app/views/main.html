@@ -1,10 +1,9 @@
-
 <div layout="column">
   <div flex>
     <md-content class="md-padding input-wrapper">
       <md-autocomplete
         md-selected-item="search"
-        md-selected-item-change="fetch()"
+        md-selected-item-change="fetch(searchText)"
         md-search-text="searchText"
         md-items="item in commonCities | filter: searchText"
         md-item-text="item.name"
@@ -17,8 +16,7 @@
     </md-content>
   </div>
   <div flex>
-    <h1>{{ searchReturn.city.name }}, {{ searchReturn.city.country }}</h1>
-    <h4>{{ actualDate | date: 'MMM d, EEEE - h:mma' }}</h4>
+    <h1 class="searched-city">{{ searchReturn.city.name }}, {{ searchReturn.city.country }}<br><span>{{ actualDate | date: 'MMM d, EEEE - h:mma' }}</span></h1>
   </div>
 </div>
 
@@ -26,12 +24,16 @@
   <div layout="row" layout-wrap>
     <md-card style="width: 23.4%;" ng-repeat="card in searchReturn.list">
       <md-card-content class="weather-cards">
-        <h3>{{ cardsDate[$index] }}</h3>
+        <h2>{{ cardsDate[$index] }}</h2>
         <div class="md-card-image wi" ng-class="getWeatherIcon(card.weather[0].icon)"></div>
-        <p>{{ card.weather[0].description }}</p>
+        <p class="day-description">{{ card.weather[0].description }}</p>
+        <p>
+          <strong>Max. Temp:</strong> {{ card.temp.max }}°<br>
+          <strong>Min. Temp:</strong> {{ card.temp.min }}°
+        </p>
       </md-card-content>
       <div class="md-actions" layout="row" layout-align="end center">
-        <md-button>see more</md-button>
+        <md-button ng-click="seeDetails()">see more</md-button>
       </div>
     </md-card>
   </div>

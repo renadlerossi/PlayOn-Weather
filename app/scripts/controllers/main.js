@@ -8,16 +8,23 @@
  * Controller of the playOnWeatherApp
  */
 angular.module('playOnWeatherApp')
-  .controller('MainCtrl', function ($scope, $http, $filter, $location) {
+  .controller('MainCtrl', function ($scope, $http, $filter, $location, weatherData) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
+    // Get current date
     $scope.actualDate = new Date();
+
+    // Create array for 16 days date
     $scope.cardsDate = [];
+
+    // Set weekdays - API doesn't have that information
     let weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    // Load weather Icons
     let weatherStatusIcons = [
       {name: '01d', icon: 'wi-day-sunny'},
       {name: '01n', icon: 'wi-night-clear'},
@@ -39,36 +46,38 @@ angular.module('playOnWeatherApp')
       {name: '50n', icon: 'wi-showers'}
     ];
 
+    $scope.fetch = function(searchWord) {
 
-    $scope.fetch = function() {
-      if ($scope.search) {
-        let cleanSearchWord = $scope.search.name.split(' ').join('');
-        apiCall(cleanSearchWord);
-      } else {
-        apiCall('Dublin, IE');
+      // Clean local storage if user searched before
+      if (localStorage) {
+        localStorage.removeItem('search');
       }
+
+      // Call API services to retrieve data
+      weatherData.apiCall(searchWord).then(function (response) {
+        $scope.searchReturn = response.data;
+
+        // Set Local Storage to be used in the second view
+        localStorage.setItem('search', $scope.searchReturn.city.name + ', ' + $scope.searchReturn.city.country);
+
+        // Calculate date and weekdays for the 16 days forecast
+        angular.forEach($scope.searchReturn.list, function (value, index) {
+          let monthDay = $scope.actualDate.getDate() + index;
+          let weekDay = weekDays[((monthDay + 1) % 7)];
+          let cardDate = weekDay + ' ' + monthDay;
+          $scope.cardsDate.push(cardDate);
+        });
+      });
     };
 
-    $scope.fetch();
+    $scope.fetch('Dublin, IE');
 
-    function apiCall(query) {
-      $http.get('http://api.openweathermap.org/data/2.5/forecast/daily?q=' + query + '&units=metric&cnt=16&APPID=e57b113884f4ac1565de77e3b580388c')
-        .then(function (response) {
-          $scope.searchReturn = response.data;
-          angular.forEach($scope.searchReturn.list, function (value, index) {
-            let monthDay = $scope.actualDate.getDate() + index;
-            let weekDay = weekDays[((monthDay + 1) % 7)];
-            let cardDate = weekDay + ' ' + monthDay;
-            $scope.cardsDate.push(cardDate);
-          });
-          console.log($scope.searchReturn);
-        });
-    }
-
+    // Search typed letters in a most common cities list to avoid overloading API with requests
     $http.get('assets/common-cities.json').then(function (response) {
         $scope.commonCities = response.data.cities;
       });
 
+    // Apply icons conform weather retrived in the API
     $scope.getWeatherIcon = function(weather) {
       let equivalentWeather = $filter('filter')(weatherStatusIcons, {name: weather});
       return equivalentWeather[0].icon;
