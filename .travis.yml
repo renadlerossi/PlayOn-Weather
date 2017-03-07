@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+- 6.2.0
+branches:
+  only:
+  - master
+sudo: required
+before_script:
+- npm install grunt-cli -g
+- gem install compass
+install:
+- npm install
+- bower install
+deploy:
+  provider: codedeploy
+  access_key_id: AKIAJQ265ZZOT7HY4LLQ
+  application: PlayWeather
+  deployment_group: production
+  region: eu-west-1
+  revision_type: github
+  wait-until-deployed: true
+  on:
+    repo: renadlerossi/PlayOn-Weather
+  secret_access_key:
+    secure: VRTCdRs2G0fITs42Pv5ir7hNVGkKuvIP95Wqv48MI0rUVL7nLNZI/3PZiZtkh7dtpKRwurdmHCXTCtOyveU6P4AZG38rMTPg2jcyAJuDFGjVWpRqbcI4xmX1wsFUvmQBAgzaCHrRCJoomgc5TgKSM0PQah1M/Z5NRVhJ9BNwLbkrchUdDLrigSzzzVLp8WFbXao6dbL8YfUxazCr4dCeoHkVWvppP7RKOMkrVK2M662Kr/0O+VWBciKZziKjUUabP/PX2s4Dsu2msfK6Bn/f7y7EWvPg1a+1v4TBhxSSLHgnnYMD0RxG/dNg+ub7asgeeOL2cqyI7eOKQRtYdHHb0EgFkp+9PFD3L0aOU5NIwWAkqHb9mgUHH9EGByxgZsCoA7azgQREh6XTrE/i89a2LOYrwC20bdP5nmxpsht1E+KEwKOcoaA81/XlfzpHa60pHCzo9Wu4cSWWVYIQyI4Y5CpqZeLOKPnID4zl/r7tzuwxz+bVjyWE5sQg2XcQgBjJx9mlGBpc8oEBbst4R7gNxUOIAtd+1yYJEaSXGyHA0Y6nuwiBONsCy28cNTy5SWGLN1/lNqAGHlLvaKMZW0gXuHYusFBSJmB+cIkckn4G8U1s0q4VfmBQ8VvZWcDsvl2ZesmR98LGs+8SlyshP1SqP2ciSDWq65K6J9Vv8hIVJ+g=

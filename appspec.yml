@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/PlayOn-Weather
+permissions:
+   - object: /home/ec2-user/PlayOn-Weather
+     pattern: "**"
+     owner: ec2-user
+     group: ec2-user
+     mode: 755
+hooks:
+  AfterInstall:
+    - location: deployment/afterInstall.sh
+      runas: root
+  ApplicationStart:
+    - location: deployment/applicationStart.sh
+      runas: root
+      timeout: 60
