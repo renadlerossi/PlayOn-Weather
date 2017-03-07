@@ -8,7 +8,7 @@
  * Controller of the playOnWeatherApp
  */
 angular.module('playOnWeatherApp')
-  .controller('DetailCtrl',  function ($scope, $location, $routeParams, $filter, weatherData, forecastDaysCalc, iconDeliver) {
+  .controller('DetailCtrl', ['$scope', '$location', '$routeParams', '$filter', 'weatherData', 'forecastDaysCalc', 'iconDeliver', function ($scope, $location, $routeParams, $filter, weatherData, forecastDaysCalc, iconDeliver) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -22,7 +22,6 @@ angular.module('playOnWeatherApp')
     weatherData.getWeatherData().then(function (data) {
       $scope.data = data;
       $scope.item = data.list[$routeParams.id];
-      console.log($scope.item);
     }, function () {
       $location.path('/');
     });
@@ -34,4 +33,4 @@ angular.module('playOnWeatherApp')
       return this.equivalentWeather[0].icon;
     };
 
-  });
+  }]);

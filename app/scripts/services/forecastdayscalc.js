@@ -8,7 +8,7 @@
  * Service in the playOnWeatherApp.
  */
 angular.module('playOnWeatherApp')
-  .service('forecastDaysCalc', function (weatherData) {
+  .service('forecastDaysCalc', ['weatherData', function (weatherData, $q) {
 
     var _this = this;
 
@@ -22,7 +22,7 @@ angular.module('playOnWeatherApp')
     _this.cardsDate = [];
 
     // Retrieve data in local storage
-    _this.data = weatherData.getData();
+    _this.data = weatherData.getWeatherData();
 
     // Calculate date and weekdays for the 16 days forecast
     angular.forEach(_this.data.list, function (value, index) {
@@ -32,4 +32,4 @@ angular.module('playOnWeatherApp')
       _this.cardsDate.push(cardDate);
     });
 
-  });
+  }]);

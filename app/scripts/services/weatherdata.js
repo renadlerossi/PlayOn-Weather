@@ -27,7 +27,7 @@ angular.module('playOnWeatherApp')
     };
 
     // Get the weather data
-    this.getWeatherData = function(searchWord) {
+    _this.getWeatherData = function(searchWord) {
       return $q(function (resolve, reject) {
 
         // If the call was initialize by a search in the input
@@ -45,7 +45,7 @@ angular.module('playOnWeatherApp')
               reject();
             });
 
-        // If the call was made in subpage
+        // If the call was made in sub page
         } else if (_this.getData()) {
           resolve(_this.getData());
         } else {

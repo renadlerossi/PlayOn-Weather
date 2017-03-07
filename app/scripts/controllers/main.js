@@ -8,18 +8,12 @@
  * Controller of the playOnWeatherApp
  */
 angular.module('playOnWeatherApp')
-  .controller('MainCtrl', function ($scope, $http, $filter, $location, weatherData, forecastDaysCalc, iconDeliver) {
+  .controller('MainCtrl', ['$scope', '$http', '$filter', '$location', 'weatherData', 'forecastDaysCalc', 'iconDeliver', function ($scope, $http, $filter, $location, weatherData, forecastDaysCalc, iconDeliver) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-
-    // Retrieve Current date
-    $scope.currentDate = forecastDaysCalc.currentDate;
-
-    // Retrieve 16 days date
-    $scope.cardsDate = forecastDaysCalc.cardsDate;
 
     $scope.fetch = function(searchWord) {
 
@@ -34,10 +28,11 @@ angular.module('playOnWeatherApp')
     // Fetch data for initial state
     $scope.fetch('Dublin, IE');
 
-    // Search typed characters in a most common cities list to avoid overloading API with requests
-    $http.get('assets/common-cities.json').then(function (response) {
-        $scope.commonCities = response.data.cities;
-      });
+    // Retrieve Current date
+    $scope.currentDate = forecastDaysCalc.currentDate;
+
+    // Retrieve 16 days date
+    $scope.cardsDate = forecastDaysCalc.cardsDate;
 
     // Apply icons conform weather collected from the API
     $scope.getWeatherIcon = function(weather) {
@@ -45,9 +40,15 @@ angular.module('playOnWeatherApp')
       return this.equivalentWeather[0].icon;
     };
 
+    // Search typed characters in a most common cities list to avoid overloading API with requests
+    $http.get('assets/common-cities.json').then(function (response) {
+      $scope.commonCities = response.data.cities;
+    });
+
+
     $scope.seeDetails = function (index) {
       localStorage.setItem('card', index);
       $location.path('/day-detail/' + index);
     };
 
-  });
+  }]);
