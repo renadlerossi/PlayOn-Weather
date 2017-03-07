@@ -11,8 +11,8 @@ describe('Service: iconDeliver', function () {
     iconDeliver = _iconDeliver_;
   }));
 
-  it('should do something', function () {
-    expect(!!iconDeliver).toBe(true);
+  it('should have 18 icons', function () {
+    expect(iconDeliver.weatherStatusIcons.length).toBe(18);
   });
 
 });
