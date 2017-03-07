@@ -8,7 +8,7 @@
  * Service in the playOnWeatherApp.
  */
 angular.module('playOnWeatherApp')
-  .service('forecastDaysCalc', ['weatherData', function (weatherData, $q) {
+  .service('forecastDaysCalc', ['weatherData', function (weatherData) {
 
     var _this = this;
 
