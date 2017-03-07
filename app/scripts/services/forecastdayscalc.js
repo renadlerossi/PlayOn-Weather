@@ -22,14 +22,21 @@ angular.module('playOnWeatherApp')
     _this.cardsDate = [];
 
     // Retrieve data in local storage
-    _this.data = weatherData.getWeatherData();
+    // _this.data = weatherData.getWeatherData();
+    function loadData() {
+      weatherData.getWeatherData().then(function (data) {
+        _this.data = data;
 
-    // Calculate date and weekdays for the 16 days forecast
-    angular.forEach(_this.data.list, function (value, index) {
-      var monthDay = _this.currentDate.getDate() + index;
-      var weekDay = _this.weekDays[((monthDay + 1) % 7)];
-      var cardDate = weekDay + ' ' + monthDay;
-      _this.cardsDate.push(cardDate);
-    });
+        // Calculate date and weekdays for the 16 days forecast
+        angular.forEach(_this.data.list, function (value, index) {
+          var monthDay = _this.currentDate.getDate() + index;
+          var weekDay = _this.weekDays[((monthDay + 1) % 7)];
+          var cardDate = weekDay + ' ' + monthDay;
+          _this.cardsDate.push(cardDate);
+        });
+      });
+    }
+
+    loadData();
 
   }]);
