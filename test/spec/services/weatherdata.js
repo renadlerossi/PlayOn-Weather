@@ -12,9 +12,6 @@ describe('Service: weatherData', function () {
   var searchWordCountry = '';
   var searchSelect = searchWordCity + ', ' + searchWordCountry;
 
-  // Mock Query
-  var apiQuery = 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + searchSelect + '&units=metric&cnt=16&APPID=e57b113884f4ac1565de77e3b580388c';
-
   // load the service's module
   beforeEach(module('playOnWeatherApp'));
 

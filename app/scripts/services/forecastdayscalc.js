@@ -22,7 +22,6 @@ angular.module('playOnWeatherApp')
     _this.cardsDate = [];
 
     // Retrieve data in local storage
-    // _this.data = weatherData.getWeatherData();
     function loadData() {
       weatherData.getWeatherData().then(function (data) {
         _this.data = data;
